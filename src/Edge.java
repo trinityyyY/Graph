@@ -4,7 +4,7 @@ public class Edge {
     static char a;
     private Edge(char _head, char _end)
     {
-        if(.getcounter())
+        //if(.getcounter())
         this.head = _head;
         this.end = _end;
     }

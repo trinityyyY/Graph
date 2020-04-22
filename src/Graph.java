@@ -1,70 +1,46 @@
+import java.util.Map;
+import java.util.List;
+import java.util.HashMap;       //чтобы хранить вершины и их связи
+import java.util.ArrayList;
+import java.util.Collections;   //для работы с списками вершин
+
 public class Graph {
-    private int maxN = 10; // максимальное количество вершин в графе
-    private int[][] mas; // матрица смежности (есть ли путь между вершинами)
-    Vertex[] vertexList; // список вершин
-    private int curN; // текущее  количество вершин
-    //private Stack stack = new Stack();// для занесения в стэк
 
-    //Конструктор
-    public Graph(){
-        vertexList = new Vertex[maxN];
-        mas = new int[maxN][maxN];
-        curN = 0;
-    }
 
-    //Добавление вершины
-    public  void addVertex(char name){
-        vertexList[curN++] = new Vertex(name);
-    }
+    private HashMap<String, List<String>> vertexMap = new HashMap<String, List<String>>();
 
-    //Создание рёбер
-    //Val для инициализации матрицы смежности ( я не понял до конца ее смысл, если думаете, что не надо, убирайте)
-    public void addEdge(int start, int end, int val){
-        mas[start][end] = 1;
-        mas[end][start] = val;
-    }
-/*
-    //Функция, которая возвращает непосещенную вершину
-    public int check(int v){
-        for (int i = 0; i < curN; i++) {
-            if (mas[v][i] == 1 && vertexList[i].IsVisited == false){
-                return i;
-            }
+    public void addVertex(String vertexName) {
+        if (!hasVertex(vertexName)) {
+            vertexMap.put(vertexName, new ArrayList<String>());
         }
-
-        return -1;
     }
-*/
-    public int getCurN() {
-        return this.curN;
+
+    public boolean hasVertex(String vertexName) {
+        return vertexMap.containsKey(vertexName); //проверяем содержится ли узел с именем
+                                                  //vertexname в массиве узлов(contains)
+    }
+
+    public boolean hasEdge(String vertexName1, String vertexName2) {
+        if (!hasVertex(vertexName1)) return false;
+        List<String> edges = vertexMap.get(vertexName1);
+
+        //если нет вершины то binarySearch вернет отрицательное значениее
+        return Collections.binarySearch(edges, vertexName2) > -1;
+    }
+
+    public void addEdge(String vertexName1, String vertexName2) {
+        if (!hasVertex(vertexName1)) addVertex(vertexName1);
+        if (!hasVertex(vertexName2)) addVertex(vertexName2);
+        List<String> edges1 = vertexMap.get(vertexName1);
+        List<String> edges2 = vertexMap.get(vertexName2);
+        edges1.add(vertexName2);
+        edges2.add(vertexName1);
+        //сортировка для удобства вывода
+        Collections.sort(edges1);
+        Collections.sort(edges2);
+    }
+
+    public Map<String, List<String>> getVertexMap() {
+        return vertexMap;
     }
 }
-
-
-/*
-    //Обход в глубину
-    public void passInDeep(int index){
-        System.out.println(vertexList[index].name);
-        vertexList[index].IsVisited = true; //отмечаем вершину как посещенную
-        stack.push(index); // заносим в стек
-
-        while (!stack.isEmpty()){
-            int neigh = check(stack.peek());
-
-            if (neigh == -1){
-                neigh = stack.pop();
-            }
-            else{
-                System.out.println(vertexList[neigh].name);
-                vertexList[neigh].IsVisited = true;
-                stack.push(neigh);
-            }
-        }
-
-        //Приводим все к начальному состоянию
-        for (int i = 0; i < curN; i++) {
-            vertexList[i].IsVisited = false;
-        }
-    }
-}
-*/
