@@ -3,7 +3,7 @@ public class Graph {
     private int[][] mas; // матрица смежности (есть ли путь между вершинами)
     Vertex[] vertexList; // список вершин
     private int curN; // текущее  количество вершин
-    private Stack stack = new Stack();// для занесения в стэк
+    //private Stack stack = new Stack();// для занесения в стэк
 
     //Конструктор
     public Graph(){
@@ -23,7 +23,7 @@ public class Graph {
         mas[start][end] = 1;
         mas[end][start] = val;
     }
-
+/*
     //Функция, которая возвращает непосещенную вершину
     public int check(int v){
         for (int i = 0; i < curN; i++) {
@@ -34,7 +34,14 @@ public class Graph {
 
         return -1;
     }
+*/
+    public int getCurN() {
+        return this.curN;
+    }
+}
 
+
+/*
     //Обход в глубину
     public void passInDeep(int index){
         System.out.println(vertexList[index].name);
@@ -60,3 +67,4 @@ public class Graph {
         }
     }
 }
+*/
