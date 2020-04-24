@@ -43,4 +43,63 @@ public class Graph {
     public Map<String, List<String>> getVertexMap() {
         return vertexMap;
     }
+
+    public void printMatrix(HashMap graph){
+        int a;
+        int edges = 0;
+        int vertexCount = graph.size();
+
+        //МАТРИЦА СМЕЖНОСТИ
+        int[][] adjMatrix = new int[vertexCount][vertexCount];
+        for(int i = 0; i < vertexCount; i++){
+            List<String> index = (List<String>) graph.get(Integer.toString(i+1));
+            System.out.println(index.size());
+            for(int j = 0; j < index.size(); j++){
+                a =Integer.parseInt(index.get(j));
+                adjMatrix[i][a-1] = 1;
+                edges++;
+            }
+        }
+        //ВЫВОД
+        for (int i = 0; i < vertexCount; i++){
+            for (int j = 0; j < vertexCount; j++){
+                System.out.print(adjMatrix[i][j]);
+            }
+            System.out.print("\n");
+        }
+
+        //МАТРИЦА ИНЦИДЕНТНОСТИ
+        System.out.print("\n");
+        edges = edges/2;
+
+        int[][] incMatrix = new int[vertexCount][edges];
+        int l, k = -1;
+        for(int i = 0; i< edges; i++){
+            int t = -1;
+            for(int j = i; j < vertexCount; j++){
+                if (adjMatrix[i][j]==1){
+                    t=j;
+                    k++;
+                    for(l = 0; l<vertexCount; l++){
+                        if(l==t){
+                            incMatrix[l][k] = 1;
+                        }else{
+                            incMatrix[l][k] = 0;
+                        }
+                        if(l==i)
+                            incMatrix[l][k] = 1;
+                    }
+                    t=-1;
+                }
+            }
+        }
+        //ВЫВОД
+        for (int i = 0; i < vertexCount; i++){
+            for (int j = 0; j < edges; j++){
+                System.out.print(incMatrix[i][j]);
+            }
+            System.out.print("\n");
+        }
+    }
+
 }
