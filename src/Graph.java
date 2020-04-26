@@ -6,7 +6,6 @@ import java.util.Collections;   //для работы с списками вер
 
 public class Graph {
 
-
     private HashMap<String, List<String>> vertexMap = new HashMap<String, List<String>>();
 
     public void addVertex(String vertexName) {
@@ -53,7 +52,6 @@ public class Graph {
         int[][] adjMatrix = new int[vertexCount][vertexCount];
         for(int i = 0; i < vertexCount; i++){
             List<String> index = (List<String>) graph.get(Integer.toString(i+1));
-            System.out.println(index.size());
             for(int j = 0; j < index.size(); j++){
                 a =Integer.parseInt(index.get(j));
                 adjMatrix[i][a-1] = 1;
@@ -102,4 +100,15 @@ public class Graph {
         }
     }
 
+    public void fillGraph(Graph test){
+        test.addVertex("1");
+        test.addVertex("2");
+        test.addVertex("3");
+        test.addVertex("4");
+        test.addEdge("1", "2");
+        test.addEdge("2", "3");
+        test.addEdge("1", "3");
+        test.addEdge("1", "4");
+        test.addEdge("3", "4");
+    }
 }
