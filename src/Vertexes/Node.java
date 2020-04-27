@@ -1,7 +1,9 @@
 package Vertexes;
 
+import java.util.Collection;
 import java.util.List;
 
 public interface Node {
-    public List<String> getEdges();
+    public void print();
+    public void addEdge(Vertex vertex);
 }

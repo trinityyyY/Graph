@@ -1,3 +1,6 @@
+import Vertexes.Vertex;
+import Vertexes.SubGraph;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -5,7 +8,7 @@ import java.util.Scanner;
 
 public class Runner {
     public static void main(String[] args){
-        Graph test = new Graph();
+        /*Graph test = new Graph();
         int a;
         Scanner in = new Scanner(System.in);
 
@@ -30,6 +33,29 @@ public class Runner {
 
         HashMap val = (HashMap) test.getVertexMap();
         test.printMatrix(val);
-        System.out.println(val);
+        System.out.println(val);*/
+
+        Vertex a = new Vertex("suka", "asd");
+        Vertex b = new Vertex("padla", "asdsdf");
+        Vertex c = new Vertex("blya", "asdsdf");
+        Vertex d = new Vertex("govno", "asdsdf");
+        Vertex e = new Vertex("zalupa", "asdsdf");
+        a.addEdge(b);
+        a.addEdge(c);
+        b.addEdge(c);
+
+        SubGraph abc = new SubGraph();
+        abc.addVertex(a);
+        abc.addVertex(b);
+        abc.addVertex(c);
+        abc.print();
+        //abc.addEdge(e);
+        e.addEdge(b);
+        e.addEdge(c);
+        abc.print();
+        e.print();
+        //ArrayList<String> edges = (ArrayList<String>) e.getVertexMap().get(e.getName());
+        //System.out.println(edges);
+
     }
 }
