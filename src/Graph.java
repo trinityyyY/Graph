@@ -37,6 +37,7 @@ public class Graph {
         //сортировка для удобства вывода
         Collections.sort(edges1);
         Collections.sort(edges2);
+        //
     }
 
     public Map<String, List<String>> getVertexMap() {
