@@ -35,16 +35,19 @@ public class Runner {
         test.printMatrix(val);
         System.out.println(val);*/
 
-        Vertex a = new Vertex("suka", "asd");
-        Vertex b = new Vertex("padla", "asdsdf");
-        Vertex c = new Vertex("blya", "asdsdf");
-        Vertex d = new Vertex("govno", "asdsdf");
-        Vertex e = new Vertex("zalupa", "asdsdf");
+        Vertex a = new Vertex("a", "asd");
+        Vertex b = new Vertex("b", "asdsdf");
+        Vertex c = new Vertex("c", "asdsdf");
+        Vertex d = new Vertex("d", "asdsdf");
+        Vertex e = new Vertex("e", "asdsdf");
         a.addEdge(b);
         a.addEdge(c);
-        b.addEdge(c);
+        a.addEdge(b);
+        b.addEdge(a);
+        a.print();
+        b.print();
 
-        SubGraph abc = new SubGraph();
+        /*SubGraph abc = new SubGraph();
         abc.addVertex(a);
         abc.addVertex(b);
         abc.addVertex(c);
@@ -52,10 +55,14 @@ public class Runner {
         //abc.addEdge(e);
         e.addEdge(b);
         e.addEdge(c);
+        abc.addVertex(e);
+        System.out.println(abc.getVertexList());
         abc.print();
         e.print();
+        System.out.println(abc.getVertexList());
+        abc.printMatrix();
         //ArrayList<String> edges = (ArrayList<String>) e.getVertexMap().get(e.getName());
-        //System.out.println(edges);
+        //System.out.println(edges);*/
 
     }
 }

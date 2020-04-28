@@ -24,17 +24,23 @@ public class Vertex implements Node{
     public void setVertexMap(HashMap newHashMap){
         this.vertexMap = newHashMap;
     }
+    public String getDescription(){ return this.Description; }
+    public void setDescription(String Description){ this.Description = Description; }
 
     @Override
     public void addEdge(Vertex vertex) {
-        List<String> edges = this.vertexMap.get(this.Name);
-        edges.add(vertex.getName());
-        this.vertexMap.put(this.Name, edges);
+        List<String> edgeList = this.vertexMap.get(this.Name);
+        //проверка на существование такой связи
+        if(edgeList.contains(vertex.getName())){
+            return;
+        }
+        edgeList.add(vertex.getName());
+        this.vertexMap.put(this.Name, edgeList);
         HashMap newVertexMap = vertex.getVertexMap();
         String vertexName = vertex.getName();
-        edges = (List<String>) newVertexMap.get(vertexName);
-        edges.add(this.Name);
-        newVertexMap.put(vertex.getName(), edges);
+        edgeList = (List<String>) newVertexMap.get(vertexName);
+        edgeList.add(this.Name);
+        newVertexMap.put(vertex.getName(), edgeList);
         vertex.setVertexMap(newVertexMap);
     }
 
