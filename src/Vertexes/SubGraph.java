@@ -24,7 +24,6 @@ public class SubGraph implements Node {
                 if(vertex1.getName() == edgeList.get(i)){                                              //Когда находим совпадения по именам вершин в графе и связях переданной вершины
                     var = vertex1;                                                                     //вызываем для двух вершин меетод addEdge дописывая их связи в hashmap у
                     var.addEdge(vertex);
-
                     //После обновления всех хэшмап записываем изменения
                     this.vertexMap.putAll(var.getVertexMap());
                 }
@@ -33,7 +32,6 @@ public class SubGraph implements Node {
         //новую вершину добавляем в список вершин для текущего графа
         this.vertexList.add(vertex);
         this.vertexMap.put(vertex.getName(), edgeList);
-        System.out.println(vertexList);
     }
 
     @Override
