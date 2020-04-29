@@ -98,7 +98,6 @@ public class Runner {
                     Vertex curVertex = new Vertex(name, description);
                     List<Vertex>vertexList = graph.getVertexList();
                     int size = vertexList.size();
-
                     List<String> connectNames = new ArrayList<>();
                     System.out.print("Введите имена вершин для связи через пробел ");
                     System.out.print("Доступно связей " + size + " ");

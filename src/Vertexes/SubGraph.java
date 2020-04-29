@@ -63,12 +63,77 @@ public class SubGraph implements Node {
         }
 
         //ВЫВОД
+        System.out.print("МАТРИЦА СМЕЖНОСТИ");
+        System.out.print("\n");
+
+        String nameVal = vertexList.get(0).getName();
+        int maxSize = nameVal.length();
+        for (int i = 1; i < vertexCount; i++){
+            int size = vertexList.get(i).getName().length();
+            if (size > maxSize ){
+                maxSize = size;
+            }
+        }
+
+
         for (int i = 0; i < vertexCount; i++){
+            if (i == 0){
+                String namePost = vertexList.get(i).getName();
+                int size = namePost.length();
+                System.out.print(" ");
+
+                for (int j = 0; j < maxSize; j++){
+                    System.out.print(" ");
+                }
+            }
+            String namePost = vertexList.get(i).getName();
+            System.out.print(namePost + " ");
+        }
+
+        System.out.print("\n");
+
+
+        for (int i = 0; i < vertexCount; i++){
+            String nameString = vertexList.get(i).getName();
+            System.out.print(nameString + ' ');
+            String namePost = vertexList.get(i).getName();
+            int size = namePost.length();
+            String namePost1 = vertexList.get(0).getName();
+            int size1 = namePost1.length();
+
+            for (int m = 0; m < maxSize - size; m ++){
+                System.out.print(" ");
+            }
+
+            for (int n = 0; n < size1/2; n++){
+                System.out.print(" ");
+            }
             for (int j = 0; j < vertexCount; j++){
-                System.out.print(adjMatrix[i][j]);
+                System.out.print(adjMatrix[i][j] );
+                String name2 = vertexList.get(j).getName();
+                int size3 = name2.length();
+
+                for (int n = 0; n < size3/2; n++){
+                    System.out.print(" ");
+                }
+
+                System.out.print(" ");
+
+                if (j != vertexCount - 1) {
+                    String name1 = vertexList.get(j + 1).getName();
+                    int size2 = name1.length();
+                    for (int n = 0; n < size2/2; n++){
+                        System.out.print(" ");
+                    }
+                }
             }
             System.out.print("\n");
         }
+
+        System.out.print("\n");
+        System.out.print("МАТРИЦА ИНЦИДЕНТНОСТИ");
+        System.out.print("\n");
+
         //МАТРИЦА ИНЦИДЕНТНОСТИ
         int[][] incMatrix = new int[vertexCount][edgesCount];
         int l, k = -1;
@@ -92,9 +157,22 @@ public class SubGraph implements Node {
             }
         }
         //ВЫВОД
+
         for (int i = 0; i < vertexCount; i++){
-            for (int j = 0; j < edgesCount; j++){
-                System.out.print(incMatrix[i][j]);
+            String nameString = vertexList.get(i).getName();
+            System.out.print(nameString + ' ');
+            String namePost = vertexList.get(i).getName();
+            int size = namePost.length();
+            String namePost1 = vertexList.get(0).getName();
+            int size1 = namePost1.length();
+            for (int m = 0; m < maxSize - size; m ++){
+                System.out.print(" ");
+            }
+            for (int n = 0; n < size1/2; n++){
+                System.out.print(" ");
+            }
+            for (int j = 0; j < vertexCount; j++){
+                System.out.print(incMatrix[i][j] );
             }
             System.out.print("\n");
         }
