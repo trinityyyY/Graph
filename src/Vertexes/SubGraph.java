@@ -22,7 +22,7 @@ public class SubGraph implements Node {
         for(int i = 0; i < size; i++){                                                                 //Двигаемся по массиву вершин связанных с переданной vertex
             for(Vertex vertex1:vertexList){                                                            //Перебираем те вершины которые экземпляр SubGraph уже хранит в себе
                 if(vertex1.getName() == edgeList.get(i)){                                              //Когда находим совпадения по именам вершин в графе и связях переданной вершины
-                    var = vertex1;                                                                     //вызываем для двух вершин меетод addEdge дописывая их связи в hashmap у
+                    var = vertex1;                                                                     //вызываем для двух вершин меетод addEdge дописывая их связи в hashmap
                     var.addEdge(vertex);
                     //После обновления всех хэшмап записываем изменения
                     this.vertexMap.putAll(var.getVertexMap());
@@ -34,6 +34,7 @@ public class SubGraph implements Node {
         this.vertexMap.put(vertex.getName(), edgeList);
     }
 
+    //Печатает хэшмапу для графа
     @Override
     public void print() {
         System.out.println(this.vertexMap);
@@ -43,6 +44,7 @@ public class SubGraph implements Node {
         return vertexList;
     }
 
+    //Вывод матриц смежности и инцидеентности
     public void printMatrix(){
         //МАТРИЦА СМЕЖНОСТИ
         int edgesCount = 0;
@@ -66,6 +68,7 @@ public class SubGraph implements Node {
         System.out.print("МАТРИЦА СМЕЖНОСТИ");
         System.out.print("\n");
 
+        //Для красивого вывода с учетом длин имен веершин
         String nameVal = vertexList.get(0).getName();
         int maxSize = nameVal.length();
         for (int i = 1; i < vertexCount; i++){
@@ -74,8 +77,6 @@ public class SubGraph implements Node {
                 maxSize = size;
             }
         }
-
-
         for (int i = 0; i < vertexCount; i++){
             if (i == 0){
                 String namePost = vertexList.get(i).getName();
